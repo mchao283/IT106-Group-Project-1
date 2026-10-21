@@ -117,7 +117,7 @@ public class BudgetCalorieMealPlanner {
             JOptionPane.showMessageDialog(null, String.format("You are over the recommended " + recommendedCalories + " daily calorie intake by " + calorieDifference + " calories.\n Recommended: Jog for " + miles + " miles to burn the excess calories.", "Final Result", JOptionPane.INFORMATION_MESSAGE, calorieDifference));
         }
         else if (caloriesConsumed == recommendedCalories) { //checks if calories consumed is exactly the same amount as the calorie intake
-            JOptionPane.showMessageDialog(null, "Congratulations! You are at the exact recommended " + recommendedCalories + "daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Congratulations! You are at the exact recommended " + recommendedCalories + " daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
         }
         else { //checks if calories consumed is less than the recommended calorie intake
             JOptionPane.showMessageDialog(null, "Congratulations! You have met the recommended " + recommendedCalories + " daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
