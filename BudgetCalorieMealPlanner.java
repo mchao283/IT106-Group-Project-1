@@ -29,7 +29,7 @@ public class BudgetCalorieMealPlanner {
             }
             
             
-            //error accepting inputs that are not a number, results in Exception in thread "main" java.lang.NumberFormatException: For input string: "e"
+            //originally had an error accepting inputs that are not a number, results in Exception in thread "main" java.lang.NumberFormatException: For input string: "e"
             try {
                 mealBudget = Double.parseDouble(budgetInput);
                 if (mealBudget > 0) { //checks that the budget entered is greater than 0, exits the loop
@@ -57,7 +57,7 @@ public class BudgetCalorieMealPlanner {
             recommendedCalories = RECOMMENDED_CALORIES_WOMEN;
             genderInput = true; //exit loop
         }
-        else if (genderChoice == 1){
+        else if (genderChoice == 1){ //1 is for selecting male
             recommendedCalories = RECOMMENDED_CALORIES_MEN;
             genderInput = true; //exit loop
         }
@@ -69,7 +69,7 @@ public class BudgetCalorieMealPlanner {
         double mealCost = 0;
         int caloriesConsumed = 0;
         
-        //selecting meal options will be a switch case to select 1. breakfast, 2. lunch, 3. dinner or 4. to exit (any other number will be an invalid input)
+        //selecting meal options will be a switch case to select 1. breakfast, 2. lunch, 3. dinner or 4. to exit
         while (programRunning) { // this will loop until Finish Day is selected, if the budget is still greater than the cost for breakfast (further below)
             
             String[] mealOptions = {"Breakfast", "Lunch", "Dinner", "Finish Day"};
@@ -111,7 +111,7 @@ public class BudgetCalorieMealPlanner {
         }   // end of while loop for meal options.
               
         int calorieDifference = Math.abs(recommendedCalories - caloriesConsumed); //takes the absolute value of recommendedCalories minus caloriesConsumed to find the excess amount of calories, if any.
-        double miles = (double) calorieDifference/100;
+        double miles = (double) calorieDifference/100; 
         
         if (caloriesConsumed > recommendedCalories) { //checks if the calories consumed is over the recommended calorie intake
             JOptionPane.showMessageDialog(null, String.format("You are over the recommended " + recommendedCalories + " daily calorie intake by " + calorieDifference + " calories.\n Recommended: Jog for " + miles + " miles to burn the excess calories.", "Final Result", JOptionPane.INFORMATION_MESSAGE, calorieDifference));
