@@ -45,17 +45,23 @@ public class BudgetCalorieMealPlanner {
         
         } //end of while loop
        
+        boolean genderInput = false;
+       int recommendedCalories = 0;
+       
+       while (!genderInput) { //will loop until a gender is selected, meaning the user can't exit out and skip the choice
         String[] genderOptions = {"Female", "Male"};
         int genderChoice = JOptionPane.showOptionDialog(null, "Select your gender for calorie recommendations:", "Gender Selection", //select between female and male for gender
                   JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, genderOptions, genderOptions[0]);
-        int recommendedCalories = 0;
         
         if (genderChoice == 0) { //0 is the integer for selecting female, otherwise it is male, sets the recommended calories to the gender that was selected.
             recommendedCalories = RECOMMENDED_CALORIES_WOMEN;
+            genderInput = true; //exit loop
         }
-        else {
+        else if (genderChoice == 1){
             recommendedCalories = RECOMMENDED_CALORIES_MEN;
+            genderInput = true; //exit loop
         }
+       }        
                 
         
         boolean programRunning = true; 
@@ -105,16 +111,16 @@ public class BudgetCalorieMealPlanner {
         }   // end of while loop for meal options.
               
         int calorieDifference = Math.abs(recommendedCalories - caloriesConsumed); //takes the absolute value of recommendedCalories minus caloriesConsumed to find the excess amount of calories, if any.
-        double joggingHours = (double) calorieDifference/100;
+        double miles = (double) calorieDifference/100;
         
         if (caloriesConsumed > recommendedCalories) { //checks if the calories consumed is over the recommended calorie intake
-            JOptionPane.showMessageDialog(null, String.format("You are over the recommended daily calorie intake by " + calorieDifference + " calories.\n Recommended: Jog for " + joggingHours + " hours to burn the excess calories.", "Final Result", JOptionPane.INFORMATION_MESSAGE, calorieDifference));
+            JOptionPane.showMessageDialog(null, String.format("You are over the recommended " + recommendedCalories + " daily calorie intake by " + calorieDifference + " calories.\n Recommended: Jog for " + miles + " miles to burn the excess calories.", "Final Result", JOptionPane.INFORMATION_MESSAGE, calorieDifference));
         }
         else if (caloriesConsumed == recommendedCalories) { //checks if calories consumed is exactly the same amount as the calorie intake
-            JOptionPane.showMessageDialog(null, "Congratulations! You are at the exact recommended daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Congratulations! You are at the exact recommended " + recommendedCalories + "daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
         }
         else { //checks if calories consumed is less than the recommended calorie intake
-            JOptionPane.showMessageDialog(null, "Congratulations! You have met the recommended daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Congratulations! You have met the recommended " + recommendedCalories + " daily calorie intake!", "Final Result", JOptionPane.INFORMATION_MESSAGE);
         }
         
         System.exit(0);
